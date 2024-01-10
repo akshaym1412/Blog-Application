@@ -32,11 +32,7 @@ app.use(express.json())
 
 app.use(cors());
 app.use(express.static(path.join(__dirname,"./frontend/dist")))
-// app.get("*",function(_,res){
-//     res.sendFile(path.join(__dirname,"./frontend/dist/index.html"),function(err){
-//         res.status(500).send(err)
-//     })
-// })
+
 // app.use((req, res, next) => {
 //     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
 //     res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -49,6 +45,11 @@ app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
 app.use("/api/posts",postRoute)
 app.use("/api/comments",commentRoute)
+app.get("*",function(req,res){
+    res.sendFile(path.join(__dirname,"./frontend/dist/index.html"),function(err){
+        res.status(500).send(err)
+    })
+})
 
 //image upload
 const storage=multer.diskStorage({
