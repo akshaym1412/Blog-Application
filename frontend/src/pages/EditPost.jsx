@@ -3,7 +3,6 @@ import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import {ImCross} from 'react-icons/im'
 import axios from "axios"
-import { URL } from "../url"
 import { useNavigate, useParams } from "react-router-dom"
 import { UserContext } from "../context/UserContext"
 
@@ -21,7 +20,7 @@ const EditPost = () => {
 
     const fetchPost=async()=>{
       try{
-        const res=await axios.get(URL+"/api/posts/"+postId)
+        const res=await axios.get("/api/posts/"+postId)
         setTitle(res.data.title)
         setDesc(res.data.desc)
         setFile(res.data.photo)
@@ -52,7 +51,7 @@ const EditPost = () => {
         // console.log(data)
         //img upload
         try{
-          const imgUpload=await axios.post(URL+"/api/upload",data)
+          const imgUpload=await axios.post("/api/upload",data)
           // console.log(imgUpload.data)
         }
         catch(err){
@@ -62,7 +61,7 @@ const EditPost = () => {
       //post upload
      
       try{
-        const res=await axios.put(URL+"/api/posts/"+postId,post,{withCredentials:true})
+        const res=await axios.put("/api/posts/"+postId,post,{withCredentials:true})
         navigate("/posts/post/"+res.data._id)
         // console.log(res.data)
 
