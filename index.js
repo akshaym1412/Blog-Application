@@ -24,14 +24,12 @@ const connectDB=async()=>{
     }
 }
 
-
-
 //middlewares
 
 dotenv.config()
 app.use(express.json())
 // app.use("/images",express.static(path.join(__dirname,"/images")))
-<<<<<<< HEAD
+
 app.use(cors());
 app.use(express.static(path.join(__dirname,"./frontend/dist")))
 // app.get("*",function(_,res){
@@ -46,9 +44,6 @@ app.use(express.static(path.join(__dirname,"./frontend/dist")))
 //     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 //     next();
 //   })
-=======
-app.use(cors({origin:"https://blogapp-nu-seven.vercel.app/",credentials:true}))
->>>>>>> 6e7a154fe94489c560e3097800ec1bb4d6ceef37
 app.use(cookieParser())
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
